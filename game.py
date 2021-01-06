@@ -23,6 +23,8 @@ score = 0
 # Выполняем приготовления
 # Создаём окно
 screen = pygame.display.set_mode(size)
+# Устанавливаем заголовок окна
+pygame.display.set_caption("Happy New Year")
 
 # Получаем необходиые элементы
 clock = pygame.time.Clock()
