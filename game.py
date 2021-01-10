@@ -14,12 +14,23 @@ class Tree:
     def __init__(self, _player, trees=[], presents=[]):
         self.image = pygame.transform.scale(pygame.image.load("tree.png"), (150, 150))
         self.rect = self.image.get_rect()
-        self.rect.update(random.randint(0, 850), random.randint(0, 650), 150, 150)
-        for present in presents:
-            for tree in trees:
-                while (self.rect.colliderect(_player.rect) == 1) or (self.rect.colliderect(tree.rect) == 1) or (
-                        self.rect.colliderect(present.rect) == 1):
-                    self.rect.update(random.randint(0, 900), random.randint(0, 700), 150, 150)
+        collided = True
+        if presents:
+            while collided:
+                self.rect.update(random.randint(0, 850), random.randint(0, 650), 150, 150)
+                collided = False
+                for present in presents:
+                    for tree in trees:
+                        if (self.rect.colliderect(_player.rect) == 1) or (self.rect.colliderect(tree.rect) == 1) or (
+                                self.rect.colliderect(present.rect) == 1):
+                            collided = True
+        else:
+            while collided:
+                self.rect.update(random.randint(0, 850), random.randint(0, 650), 150, 150)
+                collided = False
+                for tree in trees:
+                    if (self.rect.colliderect(_player.rect) == 1) or (self.rect.colliderect(tree.rect) == 1):
+                        collided = True
 
 
 class Present:
@@ -27,11 +38,23 @@ class Present:
         self.image = pygame.transform.scale(pygame.image.load("present.png"), (50, 50))
         self.rect = self.image.get_rect()
         self.rect.update(random.randint(0, 900), random.randint(0, 700), 50, 50)
-        for present in presents:
-            for TREE in trees:
-                while (self.rect.colliderect(TREE.rect) == 1) or (self.rect.colliderect(_player.rect) == 1) or (
-                        self.rect.colliderect(present.rect) == 1):
-                    self.rect.update(random.randint(0, 900), random.randint(0, 700), 50, 50)
+        collided = True
+        if presents != []:
+            while collided:
+                self.rect.update(random.randint(0, 900), random.randint(0, 700), 50, 50)
+                collided = False
+                for present in presents:
+                    for tree in trees:
+                        if (self.rect.colliderect(_player.rect) == 1) or (self.rect.colliderect(tree.rect) == 1) or (
+                                self.rect.colliderect(present.rect) == 1):
+                            collided = True
+        else:
+            while collided:
+                self.rect.update(random.randint(0, 900), random.randint(0, 700), 50, 50)
+                collided = False
+                for tree in trees:
+                    if (self.rect.colliderect(_player.rect) == 1) or (self.rect.colliderect(tree.rect) == 1):
+                        collided = True
 
 
 # Инициализируем игру
@@ -70,13 +93,13 @@ player = Player()
 # Деревья
 tree_list = []
 for i in range(0, trees_count):
-    tree = Tree(player, tree_list)
+    tree = Tree(_player=player, trees=tree_list)
     tree_list.append(tree)
 
 # Подарки
 present_list = []
 for i in range(0, presents):
-    present = Present(tree_list, player, present_list)
+    present = Present(trees=tree_list, _player=player, presents=present_list)
     present_list.append(present)
 
 while True:
@@ -116,7 +139,7 @@ while True:
         if player.rect.contains(present.rect):
             # Если собрал, то перемещаем подарок в другое место и прибавляем 1 к очкам
             present_list.remove(present)
-            new_present = Present(tree_list, player)
+            new_present = Present(tree_list, player, present_list)
             present_list.append(new_present)
             score += 1
 
@@ -124,7 +147,7 @@ while True:
         if tree.rect.contains(player.rect) == 1:
             # Если игрок врезался в ёлку
             tree_list.remove(tree)
-            new_tree = Tree(player, tree_list)
+            new_tree = Tree(player, tree_list, present_list)
             tree_list.append(new_tree)
             score -= 2
     # Начинаем рисовать
