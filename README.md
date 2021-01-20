@@ -30,4 +30,5 @@ python3 ./game.pye
 
 # Скриншоты
 ![1](https://raw.githubusercontent.com/coder8080/HappyNewYear/main/screenshots/screenshot-1.png)
+
 ![2](https://raw.githubusercontent.com/coder8080/HappyNewYear/main/screenshots/screenshot-2.png)
