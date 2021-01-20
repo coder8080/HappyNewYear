@@ -29,5 +29,5 @@ python3 ./game.pye
 - Добавить режим игры на время 
 
 # Скриншоты
-![1](<img src="https://raw.githubusercontent.com/coder8080/HappyNewYear/main/screenshots/screenshot-1.png">)
-![2](<img src="https://raw.githubusercontent.com/coder8080/HappyNewYear/main/screenshots/screenshot-2.png">)
+![1](https://raw.githubusercontent.com/coder8080/HappyNewYear/main/screenshots/screenshot-1.png)
+![2](https://raw.githubusercontent.com/coder8080/HappyNewYear/main/screenshots/screenshot-2.png)
