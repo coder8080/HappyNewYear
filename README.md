@@ -9,7 +9,7 @@
 git clone https://github.com/coder8080/HappyNewYear
 cd ./HappyNewYear
 pip3 install -r ./requirements.txt
-python3 ./game.py
+python3 ./game.pye
 ```
 
 Если при выполнении команд возникает ошибка, попробуйте заменить команду python3 на python, а pip3 - на pip 
@@ -27,3 +27,7 @@ python3 ./game.py
 # Цели
 - Добавить возможность управления стрелками num-пада
 - Добавить режим игры на время 
+
+# Скриншоты
+![1](<img src="https://raw.githubusercontent.com/coder8080/HappyNewYear/main/screenshots/screenshot-1.png">)
+![2](<img src="https://raw.githubusercontent.com/coder8080/HappyNewYear/main/screenshots/screenshot-2.png">)
