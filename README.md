@@ -9,7 +9,7 @@
 git clone https://github.com/coder8080/HappyNewYear
 cd ./HappyNewYear
 pip3 install -r ./requirements.txt
-python3 ./game.pye
+python3 ./game.py
 ```
 
 Если при выполнении команд возникает ошибка, попробуйте заменить команду python3 на python, а pip3 - на pip 
